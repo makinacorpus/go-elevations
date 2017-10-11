@@ -48,13 +48,13 @@ type SrtmData struct {
 
 func newSrtmData(cacheDirectory string) *SrtmData {
 	urlsFilename := path.Join(cacheDirectory, "urls.json")
+	if _, err := os.Stat(urlsFilename); os.IsNotExist(err) {
+		reloadJsonUrls(urlsFilename)
+	}
+
 	f, err := os.Open(urlsFilename)
 	if err != nil {
-		if os.IsNotExist(err) {
-			reloadJsonUrls(urlsFilename)
-		} else {
-			panic(fmt.Sprintf("Can't find srtm urls in \"%s\"", cacheDirectory))
-		}
+		panic(fmt.Sprintf("Can't find srtm urls in \"%s\"", cacheDirectory))
 	}
 	defer f.Close()
 
