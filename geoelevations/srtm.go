@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	SRTM_BASE_URL = "http://dds.cr.usgs.gov/srtm"
+	SRTM_BASE_URL = "https://dds.cr.usgs.gov/srtm"
 	SRTM1_URL     = "/version2_1/SRTM1/"
 	SRTM3_URL     = "/version2_1/SRTM3/"
 )
